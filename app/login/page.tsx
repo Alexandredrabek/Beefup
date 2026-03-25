@@ -1,8 +1,7 @@
-export const dynamic = 'force-dynamic'
 'use client'
 
 import { useState } from 'react'
-
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/supabase/client'
 
@@ -12,8 +11,10 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-  
   const supabase = createClient()
+  
+  // We'll use this inside your login function later
+  const redirectPath = '/dashboard'
 
   const sendMagicLink = async (e: React.FormEvent) => {
     e.preventDefault()
