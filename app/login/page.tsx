@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic'
 'use client'
 
 import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+
 import Link from 'next/link'
 import { createClient } from '@/supabase/client'
 
@@ -12,8 +12,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const redirect = searchParams.get('redirect') ?? '/dashboard'
+  
   const supabase = createClient()
 
   const sendMagicLink = async (e: React.FormEvent) => {
